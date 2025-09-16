@@ -1,4 +1,3 @@
-using InfoTrack.Api.Core;
 using InfoTrack.Api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,8 +12,6 @@ builder.Logging.AddConsole();
 builder.Logging.AddDebug();
 
 var app = builder.Build();
-
-app.UseMiddleware<ConcurrencyRequestLimitter>();
 
 if (app.Environment.IsDevelopment())
 {

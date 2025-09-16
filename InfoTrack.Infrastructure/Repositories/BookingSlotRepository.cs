@@ -7,15 +7,14 @@ namespace InfoTrack.Infrastructure.Repositories;
 
 public class BookingSlotRepository(InfoTrackDbContext _dbContext) : IBookingSlotRepository
 {
-   
-    public async Task<Guid> AddBookingSlotAsync(BookingSlot bookingSlot)
+
+    public async Task AddBookingSlotsAsync(IEnumerable<BookingSlot> bookingSlots)
     {
-        var newSlot = _dbContext.BookingSlots.Add(bookingSlot);
+        _dbContext.BookingSlots.AddRange(bookingSlots);
         await _dbContext.SaveChangesAsync();
-        return newSlot.Entity.BookingSlotId;
     }
 
-    public async Task<IEnumerable<BookingSlot>> GetAllBookingSlotsAsync()
+    public async Task<List<BookingSlot>> GetAllBookingSlotsAsync()
     {
         return await _dbContext.BookingSlots.AsNoTracking().ToListAsync();
     }

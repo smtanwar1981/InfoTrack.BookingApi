@@ -11,7 +11,7 @@ namespace InfoTrack.Api.Controllers
         [HttpPost("createBooking")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateBookingAsync(CreateBookingRequest request)
+        public async Task<IActionResult> CreateBookingAsync(CreateBookingsRequest request)
         {
             var result = await _bookingSlotService.CreateBookingSlotAsync(request);
 
